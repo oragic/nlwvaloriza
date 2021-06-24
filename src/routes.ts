@@ -1,9 +1,15 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import CreateUserController from './controllers/CreateUserController';
+import CreateTagController from './controllers/CreateTagController';
+import ensureAdmin from './middlewares/ensureAdmin';
 
 const routes = Router();
 
-routes.get('/', (req: Request, res: Response) => {
-  res.send('PRIMEIRO DIA DE NLW');
-});
+const createTagController = new CreateTagController();
+const createUserController = new CreateUserController();
+
+routes.use(ensureAdmin);
+routes.post('/users', ensureAdmin, createUserController.handle);
+routes.post('/tags', createTagController.handle);
 
 export default routes;

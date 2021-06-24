@@ -5,8 +5,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('Users')
-class Users {
+@Entity('tags')
+export default class Tag {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -14,16 +14,8 @@ class Users {
   name: string;
 
   @Column()
-  email: string;
-
-  @Column()
-  admin: boolean;
-
-  @CreateDateColumn()
   created_at: Date;
 
   @CreateDateColumn()
   updated_at: Date;
 }
-
-export default Users;
