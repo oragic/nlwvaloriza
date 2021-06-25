@@ -13,7 +13,7 @@ export default class Tag {
   @Column()
   name: string;
 
-  @Column()
+  @CreateDateColumn()
   created_at: Date;
 
   @CreateDateColumn()
